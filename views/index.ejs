@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Meal</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Meal Finder</h1>
+
+    <form action="/search" method="POST" class="search-form">
+        <input name="meal" placeholder="Enter meal name">
+        <button type="submit">Search</button>
+    </form>
+
+    <% if (locals.result && result.meals) { %>
+      <h2>Choose one:</h2>
+
+      <div class="meal-grid">
+        <% result.meals.forEach(meal => { %>
+          <div class="meal-card">
+            <h3><%= meal.strMeal %></h3>
+            <img src="<%= meal.strMealThumb %>" alt="<%= meal.strMeal %>">
+
+            <form action="/meal-details" method="POST">
+              <input type="hidden" name="mealId" value="<%= meal.idMeal %>">
+              <button type="submit">Get Recipe</button>
+            </form>
+          </div>
+        <% }) %>
+      </div>
+    <% } else if (locals.result && !result.meals) { %>
+      <p class="error">No meals found. Please try again.</p>
+    <% } %>
+  </div>
+</body>
+</html>

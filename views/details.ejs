@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Details of the receipe</title>
+    <link rel="stylesheet" href="/main.css">
+  </head>
+  <body>
+  <div class="container recipe-card">
+    <h1><%= meal.strMeal %></h1>
+
+    <img src="<%= meal.strMealThumb %>" alt="<%= meal.strMeal %>">
+
+    <div class="recipe-meta">
+      <p><strong>Category:</strong> <%= meal.strCategory %></p>
+      <p><strong>Area:</strong> <%= meal.strArea %></p>
+
+      <h2>Instructions</h2>
+      <p><%= meal.strInstructions %></p>
+
+      <a href="/">Search Again</a>
+    </div>
+  </div>
+</body>
+</html>
